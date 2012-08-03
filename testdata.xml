@@ -1,0 +1,683 @@
+<airport xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://flydata.avinor.no/XmlFeed.xsd" name="OSL">
+  <flights lastUpdate="2012-07-18T18:58:29Z">
+    <flight uniqueID="2683192">
+      <airline>DK</airline>
+      <status code="D" time="2012-07-18T17:07:00"/>
+      <flight_id>DK889</flight_id>
+      <dom_int>I</dom_int>
+      <schedule_time>2012-07-14T05:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>AYT</airport>
+      <gate>53</gate>
+    </flight>
+    <flight uniqueID="2664846">
+      <airline>WF</airline>
+      <flight_id>WF127</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-15T16:55:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>FDE</airport>
+      <check_in>EF</check_in>
+      <gate>10</gate>
+    </flight>
+    <flight uniqueID="2684307">
+      <airline>AF</airline>
+      <flight_id>AF8100</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-16T04:35:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CDG</airport>
+    </flight>
+    <flight uniqueID="2678082">
+      <airline>TK</airline>
+      <flight_id>TK1754</flight_id>
+      <dom_int>I</dom_int>
+      <schedule_time>2012-07-18T16:15:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>IST</airport>
+      <check_in>H</check_in>
+      <gate>51</gate>
+      <status code="D" time="2012-07-18T17:07:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677126">
+      <airline>DY</airline>
+      <flight_id>DY1108</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T16:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>SXF</airport>
+      <check_in>C</check_in>
+      <gate>32</gate>
+      <status code="D" time="2012-07-18T17:42:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677270">
+      <airline>DY</airline>
+      <flight_id>DY3240</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T16:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CPH</airport>
+      <check_in>C</check_in>
+      <gate>43</gate>
+      <status code="D" time="2012-07-18T16:54:00"/>
+    </flight>
+    <flight uniqueID="2678837">
+      <airline>SK</airline>
+      <flight_id>SK3612</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T16:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>FRA</airport>
+      <gate>40</gate>
+      <status code="D" time="2012-07-18T16:54:00"/>
+    </flight>
+    <flight uniqueID="2677599">
+      <airline>LH</airline>
+      <flight_id>LH863</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T16:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>FRA</airport>
+      <check_in>EF</check_in>
+      <gate>40</gate>
+      <status code="D" time="2012-07-18T16:54:00"/>
+    </flight>
+    <flight uniqueID="2677333">
+      <airline>DY</airline>
+      <flight_id>DY386</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T16:50:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TOS</airport>
+      <check_in>C</check_in>
+      <gate>10</gate>
+      <status code="D" time="2012-07-18T17:05:00"/>
+    </flight>
+    <flight uniqueID="2677399">
+      <airline>DY</airline>
+      <flight_id>DY544</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>SVG</airport>
+      <check_in>C</check_in>
+      <gate>20</gate>
+      <status code="D" time="2012-07-18T17:13:00"/>
+    </flight>
+    <flight uniqueID="2677993">
+      <airline>SK</airline>
+      <flight_id>SK463</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CPH</airport>
+      <check_in>EF</check_in>
+      <gate>44</gate>
+      <status code="D" time="2012-07-18T17:11:00"/>
+    </flight>
+    <flight uniqueID="2677456">
+      <airline>DY</airline>
+      <flight_id>DY768</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TRD</airport>
+      <check_in>C</check_in>
+      <gate>28</gate>
+      <status code="D" time="2012-07-18T17:01:00"/>
+    </flight>
+    <flight uniqueID="2677424">
+      <airline>DY</airline>
+      <flight_id>DY628</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BGO</airport>
+      <check_in>C</check_in>
+      <gate>11</gate>
+      <status code="D" time="2012-07-18T17:06:00"/>
+    </flight>
+    <flight uniqueID="2677029">
+      <airline>AF</airline>
+      <flight_id>AF2375</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CDG</airport>
+      <check_in>B</check_in>
+      <gate>39</gate>
+      <status code="D" time="2012-07-18T17:07:00"/>
+    </flight>
+    <flight uniqueID="2678821">
+      <airline>AZ</airline>
+      <flight_id>AZ3563</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CDG</airport>
+      <gate>39</gate>
+      <status code="D" time="2012-07-18T17:07:00"/>
+    </flight>
+    <flight uniqueID="2677019">
+      <airline>AB</airline>
+      <flight_id>AB8243</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:15:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TXL</airport>
+      <check_in>H</check_in>
+      <gate>45</gate>
+      <status code="D" time="2012-07-18T17:38:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2676702">
+      <airline>SK</airline>
+      <flight_id>SK4047</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:15:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>SVG</airport>
+      <check_in>EF</check_in>
+      <gate>22</gate>
+      <status code="D" time="2012-07-18T17:21:00"/>
+    </flight>
+    <flight uniqueID="2677783">
+      <airline>SK</airline>
+      <flight_id>SK370</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:25:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TRD</airport>
+      <check_in>EF</check_in>
+      <gate>18</gate>
+      <status code="D" time="2012-07-18T17:36:00"/>
+    </flight>
+    <flight uniqueID="2677273">
+      <airline>DY</airline>
+      <flight_id>DY326</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>ALF</airport>
+      <check_in>C</check_in>
+      <gate>13</gate>
+      <status code="D" time="2012-07-18T17:44:00"/>
+    </flight>
+    <flight uniqueID="2677745">
+      <airline>SK</airline>
+      <flight_id>SK287</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BGO</airport>
+      <check_in>EF</check_in>
+      <gate>20</gate>
+      <status code="D" time="2012-07-18T17:53:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677767">
+      <airline>SK</airline>
+      <flight_id>SK320</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>HAU</airport>
+      <check_in>EF</check_in>
+      <gate>16</gate>
+      <status code="D" time="2012-07-18T17:36:00"/>
+    </flight>
+    <flight uniqueID="2677701">
+      <airline>SK</airline>
+      <flight_id>SK223</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>KRS</airport>
+      <check_in>EF</check_in>
+      <gate>24</gate>
+      <status code="D" time="2012-07-18T17:28:00"/>
+    </flight>
+    <flight uniqueID="2677114">
+      <airline>DY</airline>
+      <flight_id>DY1020</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:35:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>WAW</airport>
+      <check_in>C</check_in>
+      <gate>30</gate>
+      <status code="D" time="2012-07-18T17:41:00"/>
+    </flight>
+    <flight uniqueID="2677161">
+      <airline>DY</airline>
+      <flight_id>DY1354</flight_id>
+      <dom_int>I</dom_int>
+      <schedule_time>2012-07-18T17:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>EDI</airport>
+      <check_in>C</check_in>
+      <gate>59</gate>
+      <status code="D" time="2012-07-18T18:01:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677945">
+      <airline>SK</airline>
+      <flight_id>SK4528</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>MOL</airport>
+      <check_in>EF</check_in>
+      <gate>12</gate>
+      <status code="D" time="2012-07-18T18:06:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677617">
+      <airline>LX</airline>
+      <flight_id>LX1217</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>ZRH</airport>
+      <check_in>H</check_in>
+      <gate>46</gate>
+      <status code="D" time="2012-07-18T18:14:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2678840">
+      <airline>SK</airline>
+      <flight_id>SK3519</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>ZRH</airport>
+      <gate>46</gate>
+      <status code="D" time="2012-07-18T18:14:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677534">
+      <airline>KL</airline>
+      <flight_id>KL1150</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>AMS</airport>
+      <check_in>B</check_in>
+      <gate>40</gate>
+      <status code="D" time="2012-07-18T17:51:00"/>
+    </flight>
+    <flight uniqueID="2678143">
+      <airline>WF</airline>
+      <flight_id>WF155</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:50:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>SDN</airport>
+      <via_airport>SOG</via_airport>
+      <check_in>EF</check_in>
+      <gate>7</gate>
+      <status code="D" time="2012-07-18T17:55:00"/>
+    </flight>
+    <flight uniqueID="2677142">
+      <airline>DY</airline>
+      <flight_id>DY1258</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:50:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>AMS</airport>
+      <check_in>C</check_in>
+      <gate>36</gate>
+      <status code="D" time="2012-07-18T17:51:00"/>
+    </flight>
+    <flight uniqueID="2677645">
+      <airline>OV</airline>
+      <flight_id>OV138</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:50:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TLL</airport>
+      <check_in>E</check_in>
+      <gate>42</gate>
+      <status code="D" time="2012-07-18T18:07:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2678843">
+      <airline>SK</airline>
+      <flight_id>SK8416</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T17:50:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TLL</airport>
+      <gate>42</gate>
+      <status code="D" time="2012-07-18T18:07:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677929">
+      <airline>SK</airline>
+      <flight_id>SK4434</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T17:55:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>ALF</airport>
+      <via_airport>TOS</via_airport>
+      <check_in>EF</check_in>
+      <gate>26</gate>
+      <status code="D" time="2012-07-18T18:04:00"/>
+    </flight>
+    <flight uniqueID="2677466">
+      <airline>DY</airline>
+      <flight_id>DY826</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>ARN</airport>
+      <check_in>C</check_in>
+      <gate>43</gate>
+      <status code="D" time="2012-07-18T18:02:00"/>
+    </flight>
+    <flight uniqueID="2678069">
+      <airline>SU</airline>
+      <flight_id>SU2233</flight_id>
+      <dom_int>I</dom_int>
+      <schedule_time>2012-07-18T18:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>SVO</airport>
+      <check_in>G</check_in>
+      <gate>51</gate>
+      <status code="D" time="2012-07-18T18:19:00"/>
+    </flight>
+    <flight uniqueID="2667066">
+      <airline>SK</airline>
+      <flight_id>SK896</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>ARN</airport>
+      <status code="D" time="2012-07-18T18:30:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677815">
+      <airline>SK</airline>
+      <flight_id>SK4098</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T18:20:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>EVE</airport>
+      <check_in>EF</check_in>
+      <gate>22</gate>
+      <status code="D" time="2012-07-18T18:18:00"/>
+    </flight>
+    <flight uniqueID="2677591">
+      <airline>LH</airline>
+      <flight_id>LH2961</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>HAM</airport>
+      <check_in>EF</check_in>
+      <gate>39</gate>
+      <status code="D" time="2012-07-18T18:30:00"/>
+    </flight>
+    <flight uniqueID="2678826">
+      <airline>SK</airline>
+      <flight_id>SK9624</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>RIX</airport>
+      <gate>44</gate>
+      <status code="D" time="2012-07-18T18:56:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677077">
+      <airline>BT</airline>
+      <flight_id>BT154</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>RIX</airport>
+      <check_in>D</check_in>
+      <gate>44</gate>
+      <status code="D" time="2012-07-18T18:56:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2677055">
+      <airline>BE</airline>
+      <flight_id>BE5666</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BMA</airport>
+      <check_in>H</check_in>
+      <status code="C"/>
+    </flight>
+    <flight uniqueID="2677287">
+      <airline>DY</airline>
+      <flight_id>DY338</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T18:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BDU</airport>
+      <check_in>C</check_in>
+      <gate>18</gate>
+      <status code="D" time="2012-07-18T18:32:00"/>
+    </flight>
+    <flight uniqueID="2677337">
+      <airline>DY</airline>
+      <flight_id>DY388</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T18:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TOS</airport>
+      <check_in>C</check_in>
+      <gate>26</gate>
+      <status code="D" time="2012-07-18T18:50:00"/>
+      <delayed>Y</delayed>
+    </flight>
+    <flight uniqueID="2676700">
+      <airline>SK</airline>
+      <flight_id>SK1475</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T18:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CPH</airport>
+      <check_in>EF</check_in>
+      <gate>41</gate>
+      <status code="D" time="2012-07-18T18:43:00"/>
+    </flight>
+    <flight uniqueID="2677481">
+      <airline>FHY</airline>
+      <flight_id>FHY224</flight_id>
+      <dom_int>I</dom_int>
+      <schedule_time>2012-07-18T19:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>AYT</airport>
+      <check_in>G</check_in>
+      <gate>50</gate>
+      <status code="E" time="2012-07-18T19:15:00"/>
+    </flight>
+    <flight uniqueID="2677255">
+      <airline>DY</airline>
+      <flight_id>DY280</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>KRS</airport>
+      <check_in>C</check_in>
+      <gate>24</gate>
+      <status code="D" time="2012-07-18T18:55:00"/>
+    </flight>
+    <flight uniqueID="2677044">
+      <airline>BA</airline>
+      <flight_id>BA769</flight_id>
+      <dom_int>I</dom_int>
+      <schedule_time>2012-07-18T19:05:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>LHR</airport>
+      <check_in>H</check_in>
+      <gate>56</gate>
+    </flight>
+    <flight uniqueID="2677303">
+      <airline>DY</airline>
+      <flight_id>DY358</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BOO</airport>
+      <check_in>C</check_in>
+      <gate>33</gate>
+    </flight>
+    <flight uniqueID="2679200">
+      <airline>WF</airline>
+      <flight_id>WF132</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>FRO</airport>
+      <check_in>EF</check_in>
+      <gate>14B</gate>
+    </flight>
+    <flight uniqueID="2678181">
+      <airline>WF</airline>
+      <flight_id>WF195</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:40:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>FDE</airport>
+      <check_in>EF</check_in>
+      <gate>10</gate>
+    </flight>
+    <flight uniqueID="2677787">
+      <airline>SK</airline>
+      <flight_id>SK382</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TRD</airport>
+      <check_in>EF</check_in>
+      <gate>22</gate>
+    </flight>
+    <flight uniqueID="2677759">
+      <airline>SK</airline>
+      <flight_id>SK295</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BGO</airport>
+      <check_in>EF</check_in>
+      <gate>31</gate>
+    </flight>
+    <flight uniqueID="2677809">
+      <airline>SK</airline>
+      <flight_id>SK4051</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>SVG</airport>
+      <check_in>EF</check_in>
+      <gate>17</gate>
+    </flight>
+    <flight uniqueID="2677676">
+      <airline>SK</airline>
+      <flight_id>SK1334</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T19:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>AES</airport>
+      <check_in>EF</check_in>
+      <gate>29</gate>
+    </flight>
+    <flight uniqueID="2677426">
+      <airline>DY</airline>
+      <flight_id>DY6282</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T20:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>JTR</airport>
+      <check_in>C</check_in>
+      <gate>38</gate>
+    </flight>
+    <flight uniqueID="2677241">
+      <airline>DY</airline>
+      <flight_id>DY194</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T20:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>HAU</airport>
+      <check_in>C</check_in>
+      <gate>20</gate>
+    </flight>
+    <flight uniqueID="2677317">
+      <airline>DY</airline>
+      <flight_id>DY368</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T20:15:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>EVE</airport>
+      <check_in>C</check_in>
+      <gate>28</gate>
+    </flight>
+    <flight uniqueID="2677436">
+      <airline>DY</airline>
+      <flight_id>DY638</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T20:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>BGO</airport>
+      <check_in>C</check_in>
+      <gate>26</gate>
+    </flight>
+    <flight uniqueID="2677460">
+      <airline>DY</airline>
+      <flight_id>DY774</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T20:30:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>TRD</airport>
+      <check_in>C</check_in>
+      <gate>24</gate>
+    </flight>
+    <flight uniqueID="2677353">
+      <airline>DY</airline>
+      <flight_id>DY418</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T20:45:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>AES</airport>
+      <check_in>C</check_in>
+      <gate>29</gate>
+    </flight>
+    <flight uniqueID="2677361">
+      <airline>DY</airline>
+      <flight_id>DY428</flight_id>
+      <dom_int>D</dom_int>
+      <schedule_time>2012-07-18T21:00:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>MOL</airport>
+      <check_in>C</check_in>
+      <gate>33</gate>
+    </flight>
+    <flight uniqueID="2677427">
+      <airline>DY</airline>
+      <flight_id>DY6286</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T21:10:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>CFU</airport>
+      <check_in>C</check_in>
+      <gate>46</gate>
+    </flight>
+    <flight uniqueID="2677431">
+      <airline>DY</airline>
+      <flight_id>DY6296</flight_id>
+      <dom_int>S</dom_int>
+      <schedule_time>2012-07-18T21:20:00</schedule_time>
+      <arr_dep>D</arr_dep>
+      <airport>RHO</airport>
+      <check_in>C</check_in>
+      <gate>47A</gate>
+    </flight>
+  </flights>
+</airport>
