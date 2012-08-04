@@ -1,5 +1,4 @@
 // ---------- INCLUDES --------------------------------------------------------
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
@@ -15,41 +14,32 @@ extern "C" {
 struct Tag;
 struct Info;
 
-// ---------- TYPEDEFS --------------------------------------------------------
-typedef std::pair<std::string, std::string> attr;
-typedef std::map<std::string, std::string>  attr_map;
-typedef std::vector<Tag*>                   tag_vector;
-typedef unsigned int                        pos;
-
 // ---------- STRUCTS ---------------------------------------------------------
 struct Tag {
     // --- Tag description
-    std::string name;                   // Tag ID
-    attr_map    attributes;             // Map of attributes
+    std::string name;                               // Tag ID
+    std::map<std::string, std::string> attributes;  // Map of attributes
     
     // --- Tag data
-    tag_vector  tags;                   // Sub tags
-    std::string tag_data;               // String of tag data
+    std::vector<Tag*> tags;      // Sub tags
+    std::string tag_data;       // String of tag data
 };
 
 struct File {
-    std::string fdata;                  // The XML file data
-    pos         pstart, pend;           // Current positions
+    std::string fdata;              // The XML file data
+    unsigned int pstart, pend;       // Current positions
 };
 
 // ---------- FUNCTION DECLARATION --------------------------------------------
-static int      parseXML(lua_State *L);
-void            deleteXMLtags(Tag* t);
-Tag*            parseXMLtag(File* f, std::string main_name, bool &sub_ended);
-File*           readXMLfile(std::ifstream* f);
-std::string     parseXMLname(std::string s);
-std::string     getXMLtag(File* f);
-attr_map        parseXMLattributes(std::string s);
-std::string     parseXMLtagdata(File* f);
-
-void            makeLUAtable(Tag* t);
-void            setfield(std::string index, std::string value);
-void            pushstring(std::string str);
+static int parseXML(lua_State *L);
+void deleteXMLtags(Tag* t);
+Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended);
+File* readXMLfile(std::ifstream* f);
+std::string parseXMLname(std::string s);
+std::string getXMLtag(File* f);
+std::string parseXMLtagdata(File* f);
+std::map<std::string, std::string> parseXMLattributes(std::string s);
+void makeLUAtable(Tag* t);
 
 // ---------- GLOBAL VARIABLES ------------------------------------------------
 lua_State *L;
@@ -67,65 +57,46 @@ int main() {
 
 // ---------- PARSE AN XML DOCUMENT -------------------------------------------
 static int parseXML(lua_State *L) {
-    File*           file;
-    tag_vector      tags;
-    Tag*            root_tag;
-    bool            dummy;
-    std::string     root_name, filename;
-    std::ifstream   inn;
+    File* file;
+    std::vector<Tag*> tags;
+    Tag* root_tag;
+    bool dummy;
+    std::string root_name, filename;
+    std::ifstream inn;
 
     filename = luaL_checkstring(L, -1);
 
     inn.open(filename.c_str());
     
-    if (!inn) {
-        lua_pushnil(L);
-        return 1;
-    }
-
+    if (!inn)   {lua_pushnil(L);return 1;}
     file = readXMLfile(&inn);
-
-    if (!file) {
-        lua_pushnil(L);
-        return 1;
-    }
+    if (!file)  {lua_pushnil(L);return 1;}
     
-    root_name       = getXMLtag(file);
-    root_name       = parseXMLname(root_name);
-    file->pstart    = file->pend = 0;
-    root_tag        = parseXMLtag(file, root_name, dummy);
+    root_name = getXMLtag(file);
+    root_name = parseXMLname(root_name);
+    file->pstart = file->pend = 0;
+    root_tag = parseXMLtag(file, root_name, dummy);
 
     makeLUAtable(root_tag);
-
     deleteXMLtags(root_tag);
     delete file;
 
     return 1;
 }
 
-// ---------- PUSH A STD::STRING TO LUA STACK ---------------------------------
-inline void pushstring(std::string str) {
-    lua_pushlstring(L, str.c_str(), str.length());
-}
-
-// ---------- MAKE AN ENTRY IN A LUA TABLE ------------------------------------
-inline void setfield(std::string index, std::string value) {
-    pushstring(value);
-    lua_setfield(L, -2, index.c_str());
-}
-
 // ---------- MAKE A LUA TABLE FROM AN XMLTAG ---------------------------------
 void makeLUAtable(Tag* t) {
-    attr_map::iterator      a_itr;      // Iterator for attributes map
-    tag_vector::iterator    t_itr;      // Iteratfor for tags vector
+    std::map<std::string, std::string>::iterator a_itr; // Iterator attr map
+    std::vector<Tag*>::iterator t_itr;  // Iteratfor for tags vector
 
     lua_newtable(L);                    // Create the table for THIS TAG
-    pushstring(t->name);                // Push the name of this tag
+    lua_pushlstring(L, t->name.c_str(), t->name.length());
     lua_setfield(L, -2, "name");        // Set name attribute
 
     lua_newtable(L);                    // Create table for attributes
-    for (a_itr = t->attributes.begin(); a_itr != t->attributes.end(); ++a_itr) {
-        setfield(a_itr->first, a_itr->second);
+    for (a_itr = t->attributes.begin(); a_itr != t->attributes.end(); ++a_itr){
+        lua_pushlstring(L, a_itr->second.c_str(), a_itr->second.length());
+        lua_setfield(L, -2, a_itr->first.c_str());
     }
 
     lua_setfield(L, -2, "attr");        // Last table made is ".attr"
@@ -141,15 +112,16 @@ void makeLUAtable(Tag* t) {
         lua_setfield(L, -2, "tags");    // Last table made is ".t
     }
     else {
-        setfield("data", t->tag_data.c_str());
+        lua_pushlstring(L, t->tag_data.c_str(), t->tag_data.length());
+        lua_setfield(L, -2, "data");
     }
 }
 
 // ---------- READ THE CONTENTS OF AN XML FILE --------------------------------
 File* readXMLfile(std::ifstream* f) {
-    pos         size, start, end;
-    File*       temp;
-    char*       buffer;
+    unsigned int size, start, end;
+    File* temp;
+    char* buffer;
     std::string data;
 
     // Get the file size
@@ -160,9 +132,7 @@ File* readXMLfile(std::ifstream* f) {
     f->seekg(0, std::ios::beg);
     size = end - start;
 
-    if (size <= 4) {
-        return NULL;
-    }
+    if (size <= 8) return NULL;
 
     // Read the files content
     buffer = new char[size + 1];
@@ -171,25 +141,23 @@ File* readXMLfile(std::ifstream* f) {
     data = std::string(buffer);
     
     // Add data to the new struct
-    temp        = new File;
+    temp = new File;
     temp->fdata = data;
-    temp->pend  = temp->pstart = 0;
+    temp->pend = temp->pstart = 0;
 
     return temp;
 }
 
 // ---------- PARSE AN XML TAG ------------------------------------------------
 Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended) {
-    Tag*        temp_tag, *sub_tag;
+    Tag* temp_tag, *sub_tag;
     std::string temp_tagstring, temp_name;
-    bool        tag_ended;
+    bool tag_ended;
 
     sub_ended = false;              // Default that this is not a closing tag
 
     temp_tagstring = getXMLtag(f);
-    if (temp_tagstring.empty()) {
-        return NULL;
-    }
+    if (temp_tagstring.empty()) return NULL;
 
     // Se if it is a terminated / closing tag
     if (temp_tagstring.at(1) == '/') {
@@ -200,8 +168,8 @@ Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended) {
     }
 
     // Create a new TAG and parse: name, attributes, and see if it has txt data
-    temp_tag             = new Tag;
-    temp_tag->name       = parseXMLname(temp_tagstring);
+    temp_tag = new Tag;
+    temp_tag->name = parseXMLname(temp_tagstring);
     temp_tag->attributes = parseXMLattributes(temp_tagstring);
 
     // If the second last char is / then this is a closed tag and
@@ -214,27 +182,19 @@ Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended) {
         while(true) {
             sub_tag = parseXMLtag(f, temp_tag->name, tag_ended);
 
-            if (!sub_tag && tag_ended == true) {
-                break;
-            }
-            else if (sub_tag) {
-                temp_tag->tags.push_back(sub_tag);
-            }
+            if (!sub_tag && tag_ended==true) break;
+            else if (sub_tag) temp_tag->tags.push_back(sub_tag);
         }
     }
     return temp_tag;
 }
 
-
 // ---------- EXTRACT A SINGLE XML TAG <...> ----------------------------------
 inline std::string getXMLtag(File* f) {
     // Get the start "<", and end ">" of the next tag to be parsed
     f->pstart = f->fdata.find("<", f->pstart);
-    f->pend   = f->fdata.find(">", f->pstart+1);
-
-    if (f->pend == std::string::npos || f->pstart == std::string::npos) {
-        return "";
-    }
+    f->pend = f->fdata.find(">", f->pstart+1);
+    if (f->pend==std::string::npos || f->pstart==std::string::npos) return "";
 
     f->pstart += 1;
     return f->fdata.substr((f->pstart-1), ((f->pend - (f->pstart-1)) + 1));
@@ -242,24 +202,24 @@ inline std::string getXMLtag(File* f) {
 
 // ---------- PARSE AN XML TAG'S NAME -----------------------------------------
 inline std::string parseXMLname(std::string s) {
-    pos start = s.find_first_not_of("<");
-    pos end   = s.find_first_of(" ");
+    unsigned int start = s.find_first_not_of("<");
+    unsigned int end = s.find_first_of(" ");
     if (end == std::string::npos) end = s.find_last_not_of(">") + 1;
     return s.substr(start, end - start);
 }
 
 // ---------- PARSE AN XML TAG'S ATTRIBUTES -----------------------------------
-attr_map parseXMLattributes(std::string s) {
-    attr_map    temp;
+std::map<std::string, std::string> parseXMLattributes(std::string s) {
+    std::map<std::string, std::string> temp;
     std::string key, value;
-    pos         start, sub_start, sub_end;
+    unsigned int start, sub_start, sub_end;
     
     start = s.find_first_of(" ");
     while (start != std::string::npos) {        
         // Find the KEY
-        sub_start   = start + 1;
-        sub_end     = s.find("=", sub_start + 1);
-        key         = s.substr(sub_start, (sub_end - sub_start));
+        sub_start = start + 1;
+        sub_end = s.find("=", sub_start + 1);
+        key = s.substr(sub_start, (sub_end - sub_start));
         
         // Find the VALUE
         sub_start   = sub_end + 1;
@@ -267,7 +227,7 @@ attr_map parseXMLattributes(std::string s) {
         value       = s.substr(sub_start + 1, (sub_end - sub_start) - 1);
 
         // Insert the pair, and find next space before next attribute
-        temp.insert(attr(key, value));
+        temp.insert(std::pair<std::string, std::string>(key, value));
         start = s.find(" ", sub_end);
     }
     return temp;
@@ -275,7 +235,7 @@ attr_map parseXMLattributes(std::string s) {
 
 // ---------- PARSE AN XML TAG'S DATA -----------------------------------------
 std::string parseXMLtagdata(File* f) {
-    pos         next_tagstart, n;
+    unsigned int next_tagstart, n;
     std::string temp;
 
     next_tagstart = f->fdata.find_first_of("<", f->pend + 1);
@@ -298,7 +258,5 @@ inline void deleteXMLtags(Tag* t) {
             t->tags.pop_back();
         }
     }
-    else {
-        delete t;
-    }
+    else delete t;
 }

@@ -1,12 +1,5 @@
----- PARSING XML ----
-file = "testdata.xml"
-
-
--- PROGRAM STARTS HERE
-
-print("File:", file)
 x = os.clock()
-result = parseXML(file)
+result = parseXML("testdata.xml")
 print(string.format("elapsed time: %.2f\n", os.clock() - x))
 
 if result == nil then
@@ -17,4 +10,6 @@ else
   print("Attr:", result.attr)
   print("Tags:", result.tags)
   print("Data:", result.data)
+
+  print(result.tags[1].tags[1].tags[1].data)
 end
