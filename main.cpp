@@ -1,4 +1,3 @@
-// ---------- INCLUDES --------------------------------------------------------
 #include <fstream>
 #include <string>
 #include <map>
@@ -10,31 +9,23 @@ extern "C" {
 #include "lualib/lauxlib.h"
 }
 
-// ---------- PREDECLARATION --------------------------------------------------
-struct Tag;
-struct Info;
-
 // ---------- STRUCTS ---------------------------------------------------------
 struct Tag {
-    // --- Tag description
     std::string name;                               // Tag ID
     std::map<std::string, std::string> attributes;  // Map of attributes
-    
-    // --- Tag data
-    std::vector<Tag*> tags;      // Sub tags
-    std::string tag_data;       // String of tag data
+    std::vector<Tag*> tags;                         // Sub tags
+    std::string tag_data;                           // String of tag data
 };
 
 struct File {
-    std::string fdata;              // The XML file data
-    unsigned int pstart, pend;       // Current positions
+    std::string fdata;                              // The XML file data
+    unsigned int pstart, pend;                      // Current positions
 };
 
 // ---------- FUNCTION DECLARATION --------------------------------------------
 static int parseXML(lua_State *L);
 void deleteXMLtags(Tag* t);
 Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended);
-File* readXMLfile(std::ifstream* f);
 std::string parseXMLname(std::string s);
 std::string getXMLtag(File* f);
 std::string parseXMLtagdata(File* f);
@@ -57,29 +48,43 @@ int main() {
 
 // ---------- PARSE AN XML DOCUMENT -------------------------------------------
 static int parseXML(lua_State *L) {
-    File* file;
+    File file;
     std::vector<Tag*> tags;
     Tag* root_tag;
     bool dummy;
-    std::string root_name, filename;
+    std::string root_name, filename, data;
+    unsigned int size, start, end;
     std::ifstream inn;
+    char* buffer;
 
-    filename = luaL_checkstring(L, -1);
+    filename = luaL_checkstring(L, -1);         // Open wanted file and check
+    inn.open(filename.c_str());                 // If it is open and good
+    if (!inn) {lua_pushnil(L);return 1;}
 
-    inn.open(filename.c_str());
+    inn.seekg(0, std::ios::beg);                // Get the file size
+    start = inn.tellg();
+    inn.seekg(0, std::ios::end);
+    end = inn.tellg();
+    inn.seekg(0, std::ios::beg);
+    size = end - start;
+
+    if (size <= 8) {lua_pushnil(L);return 1;}   // Simple check: size is valid?
+
+    buffer = new char[size + 1];                // Read file contents
+    inn.read(buffer, size);
+    buffer[size] = '\0';
+
+    file.fdata = std::string(buffer);           // Set all struct vars
+    delete [] buffer;
+    file.pend = file.pstart = 0;
     
-    if (!inn)   {lua_pushnil(L);return 1;}
-    file = readXMLfile(&inn);
-    if (!file)  {lua_pushnil(L);return 1;}
-    
-    root_name = getXMLtag(file);
+    root_name = getXMLtag(&file);               // Get name of the root tag
     root_name = parseXMLname(root_name);
-    file->pstart = file->pend = 0;
-    root_tag = parseXMLtag(file, root_name, dummy);
+    file.pend = file.pstart = 0;
 
-    makeLUAtable(root_tag);
-    deleteXMLtags(root_tag);
-    delete file;
+    root_tag = parseXMLtag(&file, root_name, dummy);    // Start the parsing
+    makeLUAtable(root_tag);                             // Algorithm and
+    deleteXMLtags(root_tag);                            // make a lua table
 
     return 1;
 }
@@ -117,37 +122,6 @@ void makeLUAtable(Tag* t) {
     }
 }
 
-// ---------- READ THE CONTENTS OF AN XML FILE --------------------------------
-File* readXMLfile(std::ifstream* f) {
-    unsigned int size, start, end;
-    File* temp;
-    char* buffer;
-    std::string data;
-
-    // Get the file size
-    f->seekg(0, std::ios::beg);
-    start = f->tellg();
-    f->seekg(0, std::ios::end);
-    end = f->tellg();
-    f->seekg(0, std::ios::beg);
-    size = end - start;
-
-    if (size <= 8) return NULL;
-
-    // Read the files content
-    buffer = new char[size + 1];
-    f->read(buffer, size);
-    buffer[size] = '\0';
-    data = std::string(buffer);
-    
-    // Add data to the new struct
-    temp = new File;
-    temp->fdata = data;
-    temp->pend = temp->pstart = 0;
-
-    return temp;
-}
-
 // ---------- PARSE AN XML TAG ------------------------------------------------
 Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended) {
     Tag* temp_tag, *sub_tag;
@@ -179,11 +153,10 @@ Tag* parseXMLtag(File* f, std::string main_name, bool &sub_ended) {
 
         // Keep on finding more sub tags and parsing them, and appending
         // each new tag to the vector of tags
-        while(true) {
+        while(sub_tag && !tag_ended) {
             sub_tag = parseXMLtag(f, temp_tag->name, tag_ended);
-
-            if (!sub_tag && tag_ended==true) break;
-            else if (sub_tag) temp_tag->tags.push_back(sub_tag);
+            //if (!sub_tag && tag_ended) break;
+            if (sub_tag) temp_tag->tags.push_back(sub_tag);
         }
     }
     return temp_tag;
@@ -222,9 +195,9 @@ std::map<std::string, std::string> parseXMLattributes(std::string s) {
         key = s.substr(sub_start, (sub_end - sub_start));
         
         // Find the VALUE
-        sub_start   = sub_end + 1;
-        sub_end     = s.find("\"", sub_start + 1);
-        value       = s.substr(sub_start + 1, (sub_end - sub_start) - 1);
+        sub_start = sub_end + 1;
+        sub_end = s.find("\"", sub_start + 1);
+        value = s.substr(sub_start + 1, (sub_end - sub_start) - 1);
 
         // Insert the pair, and find next space before next attribute
         temp.insert(std::pair<std::string, std::string>(key, value));
@@ -234,12 +207,12 @@ std::map<std::string, std::string> parseXMLattributes(std::string s) {
 }
 
 // ---------- PARSE AN XML TAG'S DATA -----------------------------------------
-std::string parseXMLtagdata(File* f) {
+inline std::string parseXMLtagdata(File* f) {
     unsigned int next_tagstart, n;
     std::string temp;
 
     next_tagstart = f->fdata.find_first_of("<", f->pend + 1);
-    temp          = f->fdata.substr(f->pend + 1, (next_tagstart - f->pend)-1);
+    temp = f->fdata.substr(f->pend + 1, (next_tagstart - f->pend)-1);
 
     for (n = 0; n < temp.length(); n++) {
         if (temp.at(n) != char(32) && temp.at(n) != char(10) &&
