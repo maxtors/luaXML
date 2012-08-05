@@ -175,8 +175,7 @@ inline std::string getXMLtag(File* f) {
 
 // ---------- PARSE AN XML TAG'S NAME -----------------------------------------
 inline std::string parseXMLname(std::string s) {
-    unsigned int start = s.find_first_not_of("<");
-    unsigned int end = s.find_first_of(" ");
+    unsigned int start = s.find_first_not_of("<"), end = s.find_first_of(" ");
     if (end == std::string::npos) end = s.find_last_not_of(">") + 1;
     return s.substr(start, end - start);
 }
